@@ -11,6 +11,7 @@ automium==0.2.6
 automium-web==0.1.1
 click==6.7
 coverage==3.6
+dj-database-url==0.4.2
 django-blogger==1.0.0.7
 django-discover-runner==0.2.2
 django-taggit==0.9.3
