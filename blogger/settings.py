@@ -80,7 +80,7 @@ SECRET_KEY = config('SECRET_KEY')
 DEBUG = config('DEBUG', default=False, cast=bool)
 DATABASES = {
     'default': dj_database_url.config(
-        default=config('postgres://ksscfatzazvyim:e65c3f6e93e6462e130c8885cae4e6f25c7bde32c4cffaf73636140350adf054@ec2-54-227-237-223.compute-1.amazonaws.com:5432/darjgio5mv0ocv')
+        default=config('DATABASE_URL')
     )
 }
 
