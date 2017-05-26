@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 
 import os
 import dj_database_url
+from decouple import config
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -21,7 +22,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = dj_database_url.config('9%+rx9(*kkj_29v%_xm1r@6h9q22^gs2qc@1j5wli8y-!h81@v')
+SECRET_KEY = config('9%+rx9(*kkj_29v%_xm1r@6h9q22^gs2qc@1j5wli8y-!h81@v')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = True
@@ -76,10 +77,10 @@ WSGI_APPLICATION = 'blogger.wsgi.application'
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
 # SECRET_KEY = dj_database_url.config('SECRET_KEY')
-DEBUG = dj_database_url.config('DEBUG', default=False, cast=bool)
+DEBUG = config('DEBUG', default=False, cast=bool)
 DATABASES = {
-    'default': dj_database_url.config(
-        default=dj_database_url.config('postgres://ksscfatzazvyim:e65c3f6e93e6462e130c8885cae4e6f25c7bde32c4cffaf73636140350adf054@ec2-54-227-237-223.compute-1.amazonaws.com:5432/darjgio5mv0ocv')
+    'default': config(
+        default=config('postgres://ksscfatzazvyim:e65c3f6e93e6462e130c8885cae4e6f25c7bde32c4cffaf73636140350adf054@ec2-54-227-237-223.compute-1.amazonaws.com:5432/darjgio5mv0ocv')
     )
 }
 
