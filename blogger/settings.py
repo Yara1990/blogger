@@ -77,7 +77,7 @@ WSGI_APPLICATION = 'blogger.wsgi.application'
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
 SECRET_KEY = config('SECRET_KEY')
-DEBUG = config('DEBUG', default=True, cast=bool)
+DEBUG = config('DEBUG', default=False, cast=bool)
 DATABASES = {
     'default': dj_database_url.config(
         default=config('HEROKU_POSTGRESQL_GRAY_URL')
