@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 
 import os
 import dj_database_url
+from decouple import config
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -21,7 +22,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = config ('9%+rx9(*kkj_29v%_xm1r@6h9q22^gs2qc@1j5wli8y-!h81@v')
+SECRET_KEY = '9%+rx9(*kkj_29v%_xm1r@6h9q22^gs2qc@1j5wli8y-!h81@v'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = True
@@ -75,10 +76,11 @@ WSGI_APPLICATION = 'blogger.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
-DEBUG = dj_database_url.config('DEBUG', default=False, cast=bool)
+SECRET_KEY = config('SECRET_KEY')
+DEBUG = config('DEBUG', default=False, cast=bool)
 DATABASES = {
     'default': dj_database_url.config(
-        default=dj_database_url.config('https://git.heroku.com/bloggersdoor.git')
+        default=config('HEROKU_POSTGRESQL_GRAY_URL')
     )
 }
 
@@ -148,3 +150,5 @@ MEDIA_URL = '/media/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'blog/templates/html_templates'),
 )
+
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
