@@ -25,7 +25,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '9%+rx9(*kkj_29v%_xm1r@6h9q22^gs2qc@1j5wli8y-!h81@v'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = True
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -76,31 +76,26 @@ WSGI_APPLICATION = 'blogger.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
-SECRET_KEY = config('SECRET_KEY')
-DEBUG = config('DEBUG', default=False, cast=bool)
+# SECRET_KEY = config('SECRET_KEY')
+# DEBUG = config('DEBUG', default=False, cast=bool)
+# DATABASES = {
+#     'default': dj_database_url.config(
+#         default=config('HEROKU_POSTGRESQL_GRAY_URL')
+#     )
+# }
+
 DATABASES = {
-    'default': dj_database_url.config(
-        default=config('HEROKU_POSTGRESQL_GRAY_URL')
-    )
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'blogger_db',
+        'USER': 'blogger_admin',
+        'PASSWORD': 'admin123',
+        'HOST': 'localhost',
+        'PORT': '',
+    }
 }
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': 'blogger_db',
-#         'USER': 'blogger_admin',
-#         'PASSWORD': 'admin123',
-#         'HOST': 'localhost',
-#         'PORT': '',
-#     }
-# }
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#     }
-# }
 
 
 # Password validation
@@ -151,4 +146,4 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'blog/templates/html_templates'),
 )
 
-STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+# STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'

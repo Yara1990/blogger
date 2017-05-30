@@ -68,7 +68,11 @@
     </nav>
 
     <!-- Page Header -->
-    <header class="masthead" style="background-image: url('{{ category.category_photo.url }}')">
+            {% with '/'|add:category.img_path as image_url  %}
+    <header class="masthead" style="background-image: url( {% static image_url %})">
+        {% endwith %}
+{#    <header class="masthead" style="background-image: url( {% static "category.img_path" %})">#}
+{#    <header class="masthead" style="background-image: url('{{ category.category_photo.url }}')">#}
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 offset-lg-2 col-md-10 offset-md-1">

@@ -29,6 +29,7 @@ class Category(models.Model):
     title = models.CharField(max_length=100, db_index=True)
     slug = models.SlugField(max_length=100, db_index=True)
     category_photo = models.ImageField(upload_to='category/', blank=True)
+    img_path = models.CharField(blank=True, null=True, max_length=100)
 
     def __unicode__(self):
         return '%s' % self.title
